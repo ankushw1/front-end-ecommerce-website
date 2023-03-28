@@ -28,6 +28,9 @@ const Header = () => {
               <FaShoppingCart color="white" fontSize="25px"/>
               <Badge>6</Badge>
             </Dropdown.Toggle>
+            <Dropdown.Menu style={{ left: "auto", right: 0 }}>
+              <span style={{padding:10}}>Cart is Empty</span>
+            </Dropdown.Menu>
           </Dropdown>
         </Container>
       </Navbar>
