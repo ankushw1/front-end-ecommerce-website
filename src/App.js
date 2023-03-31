@@ -4,8 +4,8 @@ import Header from "./components/Header";
 import Home from './components/Home'
 import About from './components/About'
 import Store from './components/Store'
-import Cart from "./components/Cart";
 import Contact from "./components/Contact";
+import Login from "./components/Login";
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <Route path="/about" Component={About}/>
         <Route path="/store" Component={Store}/>
         <Route path="/contact" Component={Contact}/>
-        <Route path="/cart" Component={Cart}/>
+        <Route path="/login" Component={Login}/>
       </Routes>
     </BrowserRouter>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -8,7 +8,6 @@ import { Badge, Dropdown } from "react-bootstrap";
 import { CartState } from "./context/Context";
 import { AiFillDelete } from "react-icons/ai";
 
-
 const Header = () => {
   const {
     state: { cart },
@@ -16,6 +15,18 @@ const Header = () => {
   } = CartState();
 
   const total = cart.reduce((acc, curr) => acc + parseFloat(curr.price), 0);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    // clear any user data or tokens here
+  };
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    // handle login here and set user data or tokens
+  };
 
   return (
     <div>
@@ -36,9 +47,15 @@ const Header = () => {
           <Link className="text-success mx-3" to="/contact">
             Contact Us
           </Link>
-          <Link className="text-success mx-3" to="/login">
-            Login
-          </Link>
+          {isLoggedIn ? (
+            <Button className="text-success mx-3" onClick={handleLogout}>
+              Logout
+            </Button>
+          ) : (
+            <Link className="text-success mx-3" to="/login">
+              Login
+            </Link>
+          )}
           <Dropdown alignRight>
             <Dropdown.Toggle variant="success">
               <FaShoppingCart color="white" fontSize="25px" />
