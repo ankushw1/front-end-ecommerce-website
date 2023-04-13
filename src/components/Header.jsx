@@ -8,12 +8,18 @@ import { Badge, Dropdown } from "react-bootstrap";
 import { CartState } from "./context/Context";
 import { AiFillDelete } from "react-icons/ai";
 
-
 const Header = () => {
   const {
     state: { cart },
-    dispatch
+    dispatch,
   } = CartState();
+
+  const key = localStorage.getItem("myKey");
+  const logoutHandler = () => {
+    localStorage.removeItem('myKey')
+  }
+
+
 
   const total = cart.reduce((acc, curr) => acc + parseFloat(curr.price), 0);
 
@@ -36,9 +42,17 @@ const Header = () => {
           <Link className="text-success mx-3" to="/contact">
             Contact Us
           </Link>
-          <Link className="text-success mx-3" to="/login">
-            Login
-          </Link>
+
+          {key ? (
+            <Link className="text-success mx-3" to="/" onClick={logoutHandler}>
+              Logout
+            </Link>
+          ) : (
+            <Link className="text-success mx-3" to="/login">
+              Login
+            </Link>
+          )}
+
           <Dropdown alignRight>
             <Dropdown.Toggle variant="success">
               <FaShoppingCart color="white" fontSize="25px" />
@@ -74,9 +88,11 @@ const Header = () => {
               ) : (
                 <span style={{ padding: 10 }}>Cart is Empty</span>
               )}
-                              {cart.length > 0 && (
-                  <span className="centered-text">Total: ${Number(total).toFixed(2)}</span>
-                )}
+              {cart.length > 0 && (
+                <span className="centered-text">
+                  Total: ${Number(total).toFixed(2)}
+                </span>
+              )}
               <div className="buttonItem">
                 {cart.length > 0 ? (
                   <Button onClick={() => alert("Thank you for shopping!")}>
