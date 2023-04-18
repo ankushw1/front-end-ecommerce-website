@@ -1,35 +1,45 @@
-
 import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
+import ankush from './images/ankush.jpeg';
 
 const AboutPage = () => {
   return (
     <>
-    
       <Card style={{ width: "50rem" }} className="shadow-lg mx-auto mt-3">
-        <Card.Title className="shadow-lg mx-auto mt-3">About</Card.Title>
-        <Card.Body>
-          Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
-          sorrows, hates no prosecutors will unfold in the enduring of which
-          were born in it? Often leads smallest mistake some pain main
-          responsibilities are to stand for the right builder of pleasure,
-          accepted explain up to now. , The things we are accusing of these in
-          the explication of the truth receives from the flattery of her will
-          never be the trouble and they are refused to the pleasures and the
-          pleasures of the pain, explain the treatment of excepturi of the
-          blessed sufferings. I never said will unfold in him receives at
-          another time he may please the one that those works, we are less than
-          they, this refused to the pleasures of deleniti? Those are! Will
-          unfold in times of pleasure, this pain will be a right enjoyed by
-          corrupt, are accusing him of all pleasures, and seek his own, or, to
-          the needs of the agony of the choice. We hate the fellow. Lorem ipsum
-          dolor, sit amet consectetur rebates. The distinction, that arise from
-          or to. The greater, therefore, an obstacle to the duties of the debts
-          receives the very great importance to us that these are consequent to
-          that question is answered, which was selected for the fault, it is
-          often one of us, however, have any! Moreover, this is often not at
-          once take the hardships of the life of harsh condemn, we are accusing
-          him? Him whom something large cisterns
-        </Card.Body>
+        <div className="d-flex align-items-center">
+          <Image src={ankush} alt="about" className="p-3 rounded border" style={{width: "20rem"}} />
+          <div className="flex-grow-1">
+            <Card.Title className="shadow-lg mx-auto mt-3">About Us</Card.Title>
+            <Card.Body>
+              Welcome to <strong>MaxTechies !!!</strong> We are an online store that
+              offers a wide range of products to meet all of your shopping needs.
+              Our goal is to provide our customers with a convenient and enjoyable
+              shopping experience from start to finish. We pride ourselves on our
+              extensive selection of products, competitive pricing, and exceptional
+              customer service. 
+              
+              <br />
+              <br />Whether you're shopping for the latest fashion
+              trends, the newest electronics, or something else entirely, we've got
+              you covered. With fast and reliable shipping, you can rest assured
+              that your purchase will arrive on time and in excellent condition. At 
+              <strong> MaxTechies </strong>, we are dedicated to making your
+              shopping experience as seamless as possible. Our user-friendly website
+              is designed to help you find exactly what you're looking for quickly
+              and easily. 
+              
+              <br />
+              <br />If you have any questions or concerns, our friendly and
+              knowledgeable customer service team is always here to help. We believe
+              in offering our customers the best value for their money, which is why
+              we are constantly updating our inventory and sourcing new products. We
+              also offer special deals and promotions on a regular basis, so be sure
+              to sign up for our newsletter to stay up-to-date on the latest offers.
+              Thank you for choosing <strong> MaxTechies </strong> as your go-to
+              shopping destination. We look forward to serving you!
+            </Card.Body>
+          </div>
+        </div>
       </Card>
     </>
   );

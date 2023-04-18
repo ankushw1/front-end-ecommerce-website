@@ -1,35 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import { FaShoppingCart } from "react-icons/fa";
 import { Badge, Dropdown } from "react-bootstrap";
 import { CartState } from "./context/Context";
 import { AiFillDelete } from "react-icons/ai";
+import AuthContext from "./store/auth-context";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const authCtx = useContext(AuthContext);
+
+  const logoutHandler = () => {
+    authCtx.logout();
+    navigate("/login");
+  };
+
   const {
     state: { cart },
     dispatch,
   } = CartState();
 
-  const key = localStorage.getItem("myKey");
-  const logoutHandler = () => {
-    localStorage.removeItem('myKey')
-  }
-
-
+  const key = localStorage.getItem("email");
 
   const total = cart.reduce((acc, curr) => acc + parseFloat(curr.price), 0);
 
   return (
     <div>
-      <Navbar bg="dark" expand="lg">
+      <Navbar bg="dark" variant="light" expand="lg">
         <Container>
-          <h1 className="text-warning" to="/">
+          <h2 className="text-warning" to="/">
             MaxTechies
-          </h1>
+          </h2>
           <Link className="text-success mx-3" to="/">
             Home
           </Link>
@@ -42,8 +47,8 @@ const Header = () => {
           <Link className="text-success mx-3" to="/contact">
             Contact Us
           </Link>
-
-          {key ? (
+          {authCtx.isLoggedIn && <h5 style={{ color: "yellow" }}>{key}</h5>}
+          {authCtx.isLoggedIn ? (
             <Link className="text-success mx-3" to="/" onClick={logoutHandler}>
               Logout
             </Link>
